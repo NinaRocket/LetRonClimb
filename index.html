@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let Ron Climb</title>
+  <meta
+    name="description"
+    content="A sweet, respectful request to preserve safe, permitted climbing access at Purgatory Chasm for longtime climbers like Ron."
+  />
+
+  <style>
+    :root {
+      --forest: #274336;
+      --moss: #5d7355;
+      --sage: #dfe8d8;
+      --cream: #fff8eb;
+      --warm: #f2c879;
+      --stone: #5f5b53;
+      --clay: #b66f4c;
+      --ink: #2b2b28;
+      --white: #ffffff;
+      --shadow: 0 16px 40px rgba(39, 67, 54, 0.16);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 248, 235, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(39, 67, 54, 0.12);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: var(--forest);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--forest);
+      color: var(--cream);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--forest);
+      font-weight: 700;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background: var(--forest);
+      color: var(--white);
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 44px rgba(39, 67, 54, 0.22);
+    }
+
+    .button.secondary {
+      background: var(--white);
+      color: var(--forest);
+      border-color: rgba(39, 67, 54, 0.22);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(242, 200, 121, 0.5), transparent 34%),
+        linear-gradient(135deg, #fff8eb 0%, #eaf1e4 100%);
+      padding: 82px 0 56px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(93, 115, 85, 0.14);
+      z-index: 0;
+    }
+
+    .hero::before {
+      width: 340px;
+      height: 340px;
+      right: -120px;
+      top: 60px;
+    }
+
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      left: -70px;
+      bottom: -70px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--forest);
+      font-weight: 800;
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.7rem);
+      line-height: 0.88;
+      letter-spacing: -0.07em;
+      color: var(--forest);
+      margin-bottom: 22px;
+    }
+
+    .hero-copy {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      max-width: 680px;
+      color: #3f4039;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .tiny-note {
+      max-width: 620px;
+      font-size: 0.92rem;
+      color: #626158;
+    }
+
+    .photo-card {
+      position: relative;
+      background: var(--white);
+      padding: 16px;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      transform: rotate(1.5deg);
+    }
+
+    .photo-placeholder {
+      min-height: 440px;
+      border-radius: 24px;
+      background:
+        linear-gradient(rgba(39, 67, 54, 0.18), rgba(39, 67, 54, 0.2)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80") center/cover;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .photo-caption {
+      width: 100%;
+      background: rgba(39, 67, 54, 0.82);
+      border-radius: 18px;
+      padding: 14px 16px;
+      backdrop-filter: blur(8px);
+      font-weight: 700;
+    }
+
+    .badge {
+      position: absolute;
+      right: -8px;
+      top: -14px;
+      width: 124px;
+      height: 124px;
+      border-radius: 50%;
+      background: var(--warm);
+      color: var(--forest);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.05;
+      box-shadow: var(--shadow);
+      transform: rotate(10deg);
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: var(--forest);
+      margin-bottom: 18px;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      font-size: 1.13rem;
+      color: #4b4b44;
+      margin-bottom: 28px;
+    }
+
+    .story-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 4vw, 44px);
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .portrait-placeholder {
+      min-height: 360px;
+      border-radius: 22px;
+      background:
+        linear-gradient(rgba(39, 67, 54, 0.08), rgba(39, 67, 54, 0.18)),
+        url("https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=1000&q=80") center/cover;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+    }
+
+    .portrait-placeholder p {
+      background: rgba(255, 248, 235, 0.92);
+      color: var(--forest);
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 800;
+    }
+
+    .story-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .story-list li {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .check {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--forest);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .quote-band {
+      background: var(--forest);
+      color: var(--cream);
+      padding: 54px 0;
+    }
+
+    .quote {
+      font-size: clamp(1.6rem, 3.5vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      max-width: 980px;
+      font-weight: 900;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 18px;
+      font-size: 1rem;
+      letter-spacing: 0;
+      font-weight: 700;
+      color: rgba(255, 248, 235, 0.78);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(39, 67, 54, 0.1);
+      border: 1px solid rgba(39, 67, 54, 0.08);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--sage);
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+    }
+
+    .card h3 {
+      color: var(--forest);
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+    }
+
+    .solutions {
+      background:
+        linear-gradient(rgba(255, 248, 235, 0.92), rgba(255, 248, 235, 0.92)),
+        repeating-linear-gradient(45deg, rgba(39, 67, 54, 0.08) 0 2px, transparent 2px 18px);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      background: var(--white);
+      border: 1px solid rgba(39, 67, 54, 0.15);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      color: var(--forest);
+      box-shadow: 0 8px 22px rgba(39, 67, 54, 0.08);
+    }
+
+    .memory-form {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 42px);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      font-weight: 800;
+      color: var(--forest);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 2px solid rgba(39, 67, 54, 0.16);
+      border-radius: 16px;
+      padding: 13px 14px;
+      font: inherit;
+      background: #fffdf8;
+      color: var(--ink);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 3px solid rgba(242, 200, 121, 0.65);
+      border-color: var(--forest);
+    }
+
+    .form-note {
+      font-size: 0.9rem;
+      color: #666157;
+    }
+
+    .checkbox-field {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      align-items: start;
+      background: #fffdf8;
+      border: 2px solid rgba(39, 67, 54, 0.12);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .checkbox-field input {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      accent-color: var(--forest);
+    }
+
+    .checkbox-field label {
+      margin-bottom: 0;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .form-status {
+      min-height: 1.5rem;
+      font-weight: 800;
+      color: var(--forest);
+    }
+
+    .form-status.error {
+      color: #9f3f2f;
+    }
+
+    .cta-panel {
+      background: var(--forest);
+      color: var(--cream);
+      border-radius: 34px;
+      padding: clamp(28px, 5vw, 56px);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta-panel h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .cta-panel p {
+      color: rgba(255, 248, 235, 0.84);
+      font-size: 1.1rem;
+    }
+
+    .cta-actions {
+      display: grid;
+      gap: 12px;
+      justify-items: stretch;
+    }
+
+    .cta-actions .button {
+      background: var(--warm);
+      color: var(--forest);
+      box-shadow: none;
+    }
+
+    .cta-actions .button.secondary {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(255, 248, 235, 0.4);
+    }
+.cta-actions .button {
+  font-size: 1rem;
+  font-weight: 900;
+}
+    .site-footer {
+      padding: 34px 0;
+      color: #646056;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .site-footer strong {
+      color: var(--forest);
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .hero-grid,
+      .story-card,
+      .cta-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card {
+        transform: none;
+      }
+
+      .photo-placeholder {
+        min-height: 340px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-actions,
+      .button {
+        width: 100%;
+      }
+.cta-actions .button {
+  font-size: 1.05rem;
+  min-height: 52px;
+}
+      .badge {
+        width: 98px;
+        height: 98px;
+        font-size: 0.82rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="#top" aria-label="Let Ron Climb home">
+        <span class="logo-mark">⛰️</span>
+        <span>Let Ron Climb</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#story">Ron’s Story</a>
+        <a href="#ask">The Ask</a>
+        <a href="#memories">Share a Memory</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">A love letter to Purgatory Chasm</div>
+          <h1>Let Ron Climb.</h1>
+          <p class="hero-copy">
+            For 34 years, Ron has climbed at Purgatory Chasm. At 74, it is still
+            where he stays active, grounded, and connected to the place he loves.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="#memories">Share a Purgatory memory</a>
+            <a class="button secondary" href="#ask">Read the request</a>
+          </div>
+
+          <p class="tiny-note">
+            This page is a respectful request to preserve safe, permitted climbing access.
+            We support safety, stewardship, and the rangers who care for the park.
+          </p>
+        </div>
+
+        <div class="photo-card" aria-label="Purgatory Chasm photo area">
+          <div class="badge">34 years<br />on the rocks</div>
+          <div class="photo-placeholder">
+            <p>Replace this with your favorite photo of Ron at the chasm.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="container">
+        <div class="story-card">
+          <div class="portrait-placeholder">
+            <p>Photo idea: Ron with climbing gear, smiling like the legend he is.</p>
+          </div>
+
+          <div>
+            <h2 class="section-title">Meet Ron</h2>
+            <p class="section-intro">
+              Ron is a 74-year-old climber from Auburn, Massachusetts. He has been
+              climbing at Purgatory Chasm for more than three decades, and the chasm
+              has become part of his family’s story.
+            </p>
+
+            <ul class="story-list">
+              <li>
+                <span class="check">✓</span>
+                <span>He climbs with safety gear and checks his ropes carefully.</span>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <span>He has helped visitors who were stuck or in danger.</span>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <span>He alerts park staff about hazards like broken glass or graffiti.</span>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <span>He treats Purgatory Chasm like a place worth protecting.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-band" aria-label="Quote section">
+      <div class="container">
+        <p class="quote">
+          “A complete end to climbing would not just close a route. For Ron, it would close a chapter of his life.”
+          <small>— The family behind Let Ron Climb</small>
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container">
+        <h2 class="section-title">Why Purgatory Chasm matters</h2>
+        <p class="section-intro">
+          Purgatory Chasm is not just another climbing spot. For Ron, it is close to home,
+          familiar, manageable, and deeply meaningful. Other climbing areas may exist nearby,
+          but they are not always practical for an older climber who needs a shorter approach
+          and a setup he knows well.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">💚</div>
+            <h3>It keeps him active</h3>
+            <p>
+              Climbing is one of Ron’s main forms of exercise and one of the ways he keeps
+              moving, strong, and connected to the outdoors.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🧗</div>
+            <h3>It is his passion</h3>
+            <p>
+              Ron has loved climbing for decades. Anyone who knows him knows that climbing
+              is woven into who he is.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🌲</div>
+            <h3>He cares for the park</h3>
+            <p>
+              Responsible regulars can be part of a park’s safety and stewardship culture,
+              helping notice hazards and protect the place they love.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section solutions" id="ask">
+      <div class="container">
+        <h2 class="section-title">A safe path forward</h2>
+        <p class="section-intro">
+          We recently learned that climbing access at Purgatory Chasm may change after this year.
+          Before climbing access ends, we are respectfully asking the Massachusetts Department of
+          Conservation and Recreation to consider options that balance safety, stewardship,
+          and tradition.
+        </p>
+
+        <div class="pill-list" aria-label="Possible safe access options">
+          <span class="pill">Annual climbing permits</span>
+          <span class="pill">Designated climbing areas</span>
+          <span class="pill">Safety gear requirements</span>
+          <span class="pill">Ranger check-in process</span>
+          <span class="pill">Limited access for experienced climbers</span>
+          <span class="pill">Seasonal or time-based restrictions</span>
+          <span class="pill">Volunteer cleanup partnership</span>
+          <span class="pill">Clear posted safety rules</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="memories">
+      <div class="container">
+        <h2 class="section-title">Share a memory</h2>
+        <p class="section-intro">
+          Did you grow up exploring Purgatory Chasm? Has Ron helped you there? Do you have a
+          family memory, climbing story, or reason you believe safe climbing access should continue?
+          We would love to hear it.
+        </p>
+
+        <!--
+          FORM SETUP OPTION 1: Formspree
+          1. Go to https://formspree.io and create a free form.
+          2. Copy your endpoint URL.
+          3. Replace YOUR_FORMSPREE_ENDPOINT_HERE below with that URL.
+
+          Example:
+          action="https://formspree.io/f/abcdwxyz"
+        -->
+        <form class="memory-form" id="memoryForm" action="Yhttps://formspree.io/f/xredvvjr" method="post">
+          <div class="form-grid">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="memory">Your memory or message</label>
+            <textarea id="memory" name="memory" placeholder="Tell us what Purgatory Chasm, climbing, or Ron means to you..." required></textarea>
+
+          <div class="checkbox-field">
+            <input id="sharePermission" name="share_permission" type="checkbox" value="Yes, you may share my memory publicly" />
+            <label for="sharePermission">
+              Yes, you may share my memory publicly on this website, social media, or advocacy materials.
+            </label>
+          </div>
+
+          <input type="hidden" name="_subject" value="New Let Ron Climb memory" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <p class="form-note">
+            Your message will be sent privately to Ron’s family. We will only share your memory publicly if you check the permission box above.
+          </p>
+
+          <button class="button" type="submit" style="font-size: 16px;">Submit memory</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel">
+          <div>
+            <h2>Help us keep this kind.</h2>
+            <p>
+              This is not a protest against rangers or park staff. It is a loving request to explore
+              a safe, reasonable way for responsible climbers like Ron to continue climbing at the
+              chasm they have loved and cared for.
+            </p>
+          </div>
+
+    <div class="cta-actions">
+        <button class="button" type="button" id="shareButton">
+            Share this page
+        </button>
+            <a class="button secondary" href="#memories">Add your story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Made with love by Ron’s family. <strong>Let Ron Climb.</strong>
+      </p>
+    </div>
+  </footer>
+  <script>
+    const memoryForm = document.getElementById("memoryForm");
+    const formStatus = document.getElementById("formStatus");
+
+    memoryForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const formAction = memoryForm.getAttribute("action");
+
+      if (!formAction || formAction === "https://formspree.io/f/xredvvjr") {
+        formStatus.textContent = "Form setup needed: add your Formspree endpoint in the form action.";
+        formStatus.classList.add("error");
+        return;
+      }
+
+      const submitButton = memoryForm.querySelector("button[type='submit']");
+      const formData = new FormData(memoryForm);
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+      formStatus.textContent = "";
+      formStatus.classList.remove("error");
+
+      try {
+        const response = await fetch(formAction, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (response.ok) {
+          memoryForm.reset();
+          formStatus.textContent = "Thank you — your memory has been sent with love.";
+        } else {
+          throw new Error("Form submission failed.");
+        }
+      } catch (error) {
+        formStatus.textContent = "Something went wrong. Please try again or email us directly.";
+        formStatus.classList.add("error");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit memory";
+      }
+    });
+
+    const shareButton = document.getElementById("shareButton");
+
+shareButton.addEventListener("click", async function () {
+  const shareData = {
+    title: "Let Ron Climb",
+    text: "Help preserve safe, permitted climbing access at Purgatory Chasm for longtime climbers like Ron.",
+    url: "https://letronclimb.com"
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      await navigator.clipboard.writeText(shareData.url);
+      shareButton.textContent = "Link copied!";
+
+      setTimeout(() => {
+        shareButton.textContent = "Share this page";
+      }, 2000);
+    }
+  } catch (error) {
+    console.log("Sharing canceled or failed:", error);
+  }
+});
+  </script>
+</body>
+</html>
