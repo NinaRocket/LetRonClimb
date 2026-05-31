@@ -541,7 +541,10 @@
       background: var(--warm);
       color: var(--forest);
       box-shadow: none;
+       font-size: 1rem;
+  font-weight: 900;
     }
+
 
     .cta-actions .button.secondary {
       background: transparent;
@@ -597,7 +600,10 @@
       .button {
         width: 100%;
       }
-
+  .cta-actions .button {
+    font-size: 1.05rem;
+    min-height: 52px;
+  }
       .badge {
         width: 98px;
         height: 98px;
@@ -834,9 +840,9 @@
           </div>
 
           <div class="cta-actions">
-            <a class="button" href="mailto:?subject=Let Ron Climb&body=I wanted to share this sweet request to preserve safe, permitted climbing at Purgatory Chasm: https://letronclimb.com">
-              Share this page
-            </a>
+  <button class="button" type="button" id="shareButton">
+  Share this page
+</button>
             <a class="button secondary" href="#memories">Add your story</a>
           </div>
         </div>
@@ -899,6 +905,31 @@
         submitButton.textContent = "Submit memory";
       }
     });
+
+    const shareButton = document.getElementById("shareButton");
+
+shareButton.addEventListener("click", async function () {
+  const shareData = {
+    title: "Let Ron Climb",
+    text: "Help preserve safe, permitted climbing access at Purgatory Chasm for longtime climbers like Ron.",
+    url: "https://letronclimb.com"
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      await navigator.clipboard.writeText(shareData.url);
+      shareButton.textContent = "Link copied!";
+
+      setTimeout(() => {
+        shareButton.textContent = "Share this page";
+      }, 2000);
+    }
+  } catch (error) {
+    console.log("Sharing canceled or failed:", error);
+  }
+});
   </script>
 </body>
 </html>
