@@ -606,6 +606,10 @@
   display: grid;
   gap: 18px;
   margin-top: 30px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 10px;
+  scroll-behavior: smooth;
 }
 
 .submitted-story {
@@ -647,6 +651,24 @@
   font-weight: 700;
   color: #6a665d;
   font-size: 0.92rem;
+}
+
+.story-submissions::-webkit-scrollbar {
+  width: 10px;
+}
+
+.story-submissions::-webkit-scrollbar-track {
+  background: rgba(39, 67, 54, 0.08);
+  border-radius: 999px;
+}
+
+.story-submissions::-webkit-scrollbar-thumb {
+  background: var(--moss);
+  border-radius: 999px;
+}
+
+.story-submissions::-webkit-scrollbar-thumb:hover {
+  background: var(--forest);
 }
 /* end stories */
     .site-footer {
@@ -694,6 +716,26 @@
       .form-grid {
         grid-template-columns: 1fr;
       }
+      .story-submissions {
+  max-height: 420px;
+  gap: 14px;
+  padding-right: 6px;
+}
+
+.submitted-story {
+  padding: 20px 22px;
+}
+
+.submitted-story blockquote {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.submitted-story::before {
+  font-size: 3.2rem;
+  top: 8px;
+  left: 18px;
+}
     }
 
     @media (max-width: 520px) {
@@ -738,8 +780,7 @@
           <div class="eyebrow">A love letter to Purgatory Chasm</div>
           <h1>Let Ron Climb.</h1>
           <p class="hero-copy">
-            For 34 years, Ron has climbed at Purgatory Chasm. At 74, it is still
-            where he stays active, grounded, and connected to the place he loves.
+         For 34 years, Ron has climbed at Purgatory Chasm. At 74, it is still where he stays active, grounded, and connected to his passion for rock climbing.
           </p>
 
           <div class="hero-actions">
@@ -839,10 +880,9 @@
       <div class="container">
         <h2 class="section-title">Why Purgatory Chasm matters</h2>
         <p class="section-intro">
-          Purgatory Chasm is not just another climbing spot. For Ron, it is close to home,
-          familiar, manageable, and deeply meaningful. Other climbing areas may exist nearby,
-          but they are not always practical for an older climber who needs a shorter approach
-          and a setup he knows well.
+Purgatory Chasm means a lot to Ron. It is close to home, familiar, and manageable for him at 74. He knows the rocks, the approach, and how to climb there safely. Ron jokes that Purgatory is “the nursing home of climbs” because the climbing spots are easy to reach, the approaches are short, and the climbs are manageable for senior climbers who still want to stay active and keep doing what they love. 
+
+
         </p>
 
         <div class="cards">
@@ -956,7 +996,9 @@
     </section>
 
 <!-- stories -->
-    <section class="section shared-stories" id="stories">
+
+<!-- Stories -->
+<section class="section shared-stories" id="stories">
   <div class="container">
     <h2 class="section-title">Stories from the chasm</h2>
     <p class="section-intro">
@@ -965,12 +1007,18 @@
       Together, these stories show how much Purgatory Chasm means to the people who know and love it.
     </p>
 
-    <div class="story-submissions">
+    <p class="form-note">
+  Stories may be lightly edited for spelling, punctuation, length, and readability while keeping the writer’s original meaning.
+</p>
+
+    <div class="story-submissions" aria-label="Shared stories about Ron and Purgatory Chasm">
       <article class="submitted-story">
         <blockquote>
-        I know Ron because I married his son haha! We went on many trips to Purgatory, its Ron's favorite place. He is proud of how he keeps his equipped clean and in check and is always willing to help someone or teach them about climbing.
-<br>
-He is one of the nicest guys I know. Please don't take away his lifetime love of climbing there!
+          I know Ron because I married his son haha! We went on many trips to Purgatory, it’s Ron’s favorite place.
+          He is proud of how he keeps his equipment clean and in check, and he is always willing to help someone
+          or teach them about climbing.
+          <br><br>
+          He is one of the nicest guys I know. Please don’t take away his lifetime love of climbing there!
         </blockquote>
         <p class="story-author">
           Danielle C.
@@ -978,18 +1026,50 @@ He is one of the nicest guys I know. Please don't take away his lifetime love of
         </p>
       </article>
 
-      <!-- <article class="submitted-story">
+      <article class="submitted-story">
         <blockquote>
-       We loved taking our family to Purgatory Park. It's walkable, had interesting formations.
+          Purgatory Chasm was such an integral part of my childhood. We went there regularly for cookouts and
+          scrambling around the rocks. When my Dad discovered a love and passion for rock climbing, he was sure
+          to teach everyone in the family how to climb. If you ever want to know anything about rock climbing,
+          ask my Dad!
+        </blockquote>
+        <p class="story-author">
+          Ron’s daughter
+          <span>Shared with permission</span>
+        </p>
+      </article>
+
+<article class="submitted-story">
+  <blockquote>
+    My uncle Ron’s passion for climbing has helped keep him young. He takes safety seriously and is always careful with his ropes, harnesses, helmet, glasses, and climbing gear. He checks everything before he climbs and is willing to teach others about using the proper equipment and following the rules.
+    <br><br>
+    Taking away Ron’s ability to climb at Purgatory Chasm would be like taking a flying license away from a pilot who has flown safely for more than 30 years. This is his passion and something he truly enjoys.
+    <br><br>
+    Please let Ronald climb. Experienced climbers who follow the rules, use proper safety gear, and respect the park should be allowed to continue climbing at Purgatory Chasm.
+  </blockquote>
+  <p class="story-author">
+    Timothy Briggs
+    <span>Ron’s nephew (passionate weather watcher) Lightly edited for clarity · Shared with permission</span>
+  </p>
+</article>
+
+
+
+      <!--
+      <article class="submitted-story">
+        <blockquote>
+          We loved taking our family to Purgatory Park. It’s walkable and has interesting formations.
         </blockquote>
         <p class="story-author">
           Anna A.
           <span>Shared with permission</span>
         </p>
-      </article> -->
+      </article>
+      -->
     </div>
   </div>
 </section>
+
 
     <section class="section">
       <div class="container">
