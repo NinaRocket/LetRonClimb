@@ -562,7 +562,38 @@
       color: var(--cream);
       border-color: rgba(255, 248, 235, 0.4);
     }
+.spider-note {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: start;
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--sage);
+  color: var(--forest);
+  border: 1px solid rgba(39, 67, 54, 0.12);
+}
 
+.spider-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--white);
+  font-size: 1.35rem;
+}
+
+.spider-note strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 1.05rem;
+}
+
+.spider-note p {
+  color: #3f4039;
+}
     .site-footer {
       padding: 34px 0;
       color: #646056;
@@ -719,8 +750,22 @@
                 <span class="check">✓</span>
                 <span>He treats Purgatory Chasm like a place worth protecting.</span>
               </li>
+              
             </ul>
+
+            <div class="spider-note">
+  <span class="spider-icon">🕷️</span>
+  <div>
+    <strong>No spiders were harmed during this climb.</strong>
+    <p>
+      Ron is careful with more than ropes. He watches out for the little spiders
+      who live on the rocks, waits for them to move aside, and lets them return
+      to their spots after he passes.
+    </p>
+  </div>
+</div>
           </div>
+          
         </div>
       </div>
     </section>
@@ -787,10 +832,10 @@
 
         <div class="pill-list" aria-label="Possible safe access options">
           <span class="pill">Annual climbing permits</span>
-          <span class="pill">Designated climbing areas</span>
+          <!-- <span class="pill">Designated climbing areas</span> -->
           <span class="pill">Safety gear requirements</span>
           <span class="pill">Ranger check-in process</span>
-          <span class="pill">Limited access for experienced climbers</span>
+          <!-- <span class="pill">Limited access for experienced climbers</span> -->
           <span class="pill">Seasonal or time-based restrictions</span>
           <span class="pill">Volunteer cleanup partnership</span>
           <span class="pill">Clear posted safety rules</span>
@@ -870,7 +915,7 @@
   <button class="button" type="button" id="shareButton">
   Share this page
 </button>
-            <a class="button secondary" href="#memories">Add your story</a>
+            <a class="button secondary" href="#memories">Share your story</a>
           </div>
         </div>
       </div>
