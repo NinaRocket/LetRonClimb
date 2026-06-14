@@ -446,12 +446,32 @@
       font-size: 1.25rem;
     }
 
-    .solutions {
+    .kind{
+      background: radial-gradient(circle at top right, rgba(242, 200, 121, 0.35), transparent 28%), var(--cream);
+    }
+    /* .solutions {
       background:
         linear-gradient(rgba(255, 248, 235, 0.92), rgba(255, 248, 235, 0.92)),
         repeating-linear-gradient(45deg, rgba(39, 67, 54, 0.08) 0 2px, transparent 2px 18px);
-    }
+    } */
 
+.solutions {
+  background:
+    radial-gradient(circle at top right, rgba(242, 200, 121, 0.16), transparent 32%),
+    linear-gradient(135deg, #fff8eb 0%, #edf4e8 62%, #e6efdf 100%);
+  border-top: 1px solid rgba(39, 67, 54, 0.08);
+  border-bottom: 1px solid rgba(39, 67, 54, 0.08);
+}
+
+.solutions.section {
+  padding: 60px 0;
+}
+
+.solutions .pill {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(39, 67, 54, 0.12);
+  box-shadow: 0 6px 18px rgba(39, 67, 54, 0.06);
+}
     .pill-list {
       display: flex;
       flex-wrap: wrap;
@@ -527,6 +547,7 @@
       border: 2px solid rgba(39, 67, 54, 0.12);
       border-radius: 16px;
       padding: 14px;
+      margin-top: 8px;
     }
 
     .checkbox-field input {
@@ -787,6 +808,15 @@
         font-size: 0.82rem;
       }
     }
+
+    @media (max-width: 520px) {
+  .solutions {
+    background:
+      radial-gradient(circle at top right, rgba(242, 200, 121, 0.12), transparent 34%),
+      linear-gradient(135deg, #fff8eb 0%, #f3f8ef 52%, #ecf3e7 100%);
+  }
+}
+
   </style>
 </head>
 
@@ -1131,7 +1161,8 @@ Purgatory Chasm means a lot to Ron. It is close to home, familiar, and manageabl
 </section>
 
 
-    <section class="section">
+<!-- keep this kind -->
+    <section class="section kind">
       <div class="container">
         <div class="cta-panel">
           <div>
@@ -1195,7 +1226,7 @@ Purgatory Chasm means a lot to Ron. It is close to home, familiar, and manageabl
 
         if (response.ok) {
           memoryForm.reset();
-          formStatus.textContent = "Thank you — your memory has been sent with love.";
+          formStatus.textContent = "Thank you —your message has been sent with love.";
         } else {
           const data = await response.json().catch(() => null);
           const errorMessage = data?.errors?.[0]?.message || "Form submission failed.";
